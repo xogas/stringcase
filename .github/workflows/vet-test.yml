@@ -1,0 +1,28 @@
+name: Vet and Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  vet-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: .
+
+      - name: set up go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.25.1'
+
+      - name: vet
+        run: go vet ./...
+
+      - name: test
+        run: go test -race -covermode=atomic -coverprofile=./coverage.out ./...
