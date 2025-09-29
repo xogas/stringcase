@@ -16,7 +16,7 @@ stringcase is a go package for converting string case to various cases (e.g. sba
 
 ## Install
 
-```Go
+```Shell
 go get -u github.com/xogas/stringcase
 ```
 
